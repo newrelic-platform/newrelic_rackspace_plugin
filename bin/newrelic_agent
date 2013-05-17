@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'newrelic_rackspace_plugin/agent_plugin'
+
+# Load any rackspace agents we find
+NewRelic::Plugin::Config.config.options['agents'].find_all do |agent, opts|
+  agent.start_with?('rackspace_') && opts['enabled']
+end.each do |rackspace_agent, _|
+  require "newrelic_#{rackspace_agent}"
+end
+
+NewRelic::Plugin::Run.setup_and_run
