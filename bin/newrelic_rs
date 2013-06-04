@@ -1,6 +1,69 @@
 #!/usr/bin/env ruby
 
+require 'getoptlong'
 require 'newrelic_rackspace_plugin/agent_plugin'
+
+def write_sample_config(path=nil)
+  path = 'config/newrelic_plugin.yml'
+  File.open(path, 'w') do |file|
+    file.write <<-EOF
+# Please make sure to update the license_key information with the
+# license key for your New Relic account.
+#
+newrelic:
+  #
+  # Update with your New Relic account license key:
+  #
+  license_key: 'LICENSE KEY'
+  #
+  # Set to '1' for verbose output, remove for normal output.
+  # All output goes to stdout/stderr.
+  #
+  verbose: 1
+#
+# Rackspace configuration.
+#
+rackspace:
+  username: 'USERNAME'
+  api_key: 'KEY'
+  region: 'REGION'
+
+agents:
+  rackspace_lb:
+    enabled: false
+EOF
+  end
+  path
+end
+
+def usage
+  <<-EOF
+newrelic_rs [OPTS]
+  --config-file -c:          Path to configuration file
+  --sample-config -s [PATH]: Write sample configuration (to optional PATH)
+  --help -h:                 This text
+EOF
+end
+
+opts = GetoptLong.new(
+  ['--config-file', '-c', GetoptLong::NO_ARGUMENT],
+  ['--sample-config', '-s', GetoptLong::OPTIONAL_ARGUMENT],
+  ['--help', '-h', GetoptLong::NO_ARGUMENT]
+)
+
+opts.each do |opt,arg|
+  case opt
+  when '--config-file'
+    NewRelic::Plugin::Config.config_file = arg
+  when '--sample-config'
+    file = write_sample_config(arg)
+    puts "Wrote sample config to: #{file}"
+    exit 1
+  else
+    puts usage
+    exit 1
+  end
+end
 
 # Load any rackspace agents we find
 NewRelic::Plugin::Config.config.options['agents'].find_all do |agent, opts|
