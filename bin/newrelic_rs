@@ -4,7 +4,9 @@ require 'getoptlong'
 require 'newrelic_rackspace_plugin/agent_plugin'
 
 def write_sample_config(path=nil)
-  path = 'config/newrelic_plugin.yml'
+  require 'fileutils'
+  path = File.expand_path(path || 'config/newrelic_plugin.yml')
+  FileUtils.mkdir_p(File.dirname(path))
   File.open(path, 'w') do |file|
     file.write <<-EOF
 # Please make sure to update the license_key information with the
