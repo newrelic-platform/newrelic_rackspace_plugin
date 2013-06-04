@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.author = 'New Relic'
   s.description = 'Rackspace plugin base'
   s.require_path = 'lib'
+  s.executables << 'newrelic_rs'
   s.add_dependency 'newrelic_plugin'
   s.add_dependency 'fog'
   s.files = Dir['**/*']
