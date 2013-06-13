@@ -33,7 +33,7 @@ rackspace:
 
 agents:
   rackspace_lb:
-    enabled: false
+    enabled: true
 EOF
   end
   path

@@ -19,9 +19,6 @@ rackspace:
   api_key: 'KEY'
   region: 'REGION'
 
-
 agents:
   rackspace_lb:
-    enabled: true
-  rackspace_db:
     enabled: true

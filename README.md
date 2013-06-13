@@ -1,4 +1,6 @@
-# Rackspace plugin
+# Rackspace plugin library
+This library is used by the following New Relic plugins:
+- [Load Balancers](https://github.com/newrelic-platform/newrelic_rackspace_load_balancers_plugin)
 
 ## Dependencies
 * Ruby
