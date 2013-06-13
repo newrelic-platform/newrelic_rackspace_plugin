@@ -125,10 +125,8 @@ module NewRelicRackspacePlugin
         case stype
         when :compute
           klass = Fog::Compute::RackspaceV2
-          args[:enpoint] = ''
         when :blockstorage
           klass = Fog::Rackspace::BlockStorage
-          args[:endpoint] = ''
         when :storage
           klass = Fog::Storage::Rackspace
         when :loadbalancers
