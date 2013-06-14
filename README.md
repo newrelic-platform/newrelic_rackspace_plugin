@@ -9,5 +9,5 @@
 2. Add entry for any rackspace plugin to include
 3. Run `bundle install --binstubs`
 4. Run `./bin/newrelic_rs --sample-config`
-5. Edit `config/newrelic_plugin.yml`
+5. Edit `config/newrelic_plugin.yml` and replace "LICENSE_KEY" with your New Relic license key
 6. Run `./bin/newrelic_rs`
