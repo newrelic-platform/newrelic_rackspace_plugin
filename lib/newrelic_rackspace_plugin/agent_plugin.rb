@@ -73,13 +73,11 @@ module NewRelicRackspacePlugin
       @agent_options
     end
 
-    # Loads required dependency library and established new relic
-    # connection 
+    # Loads required dependency library
     def setup_metrics
       require 'fog'
       @options = NewRelic::Plugin::Config.config.newrelic
       log.debug 'Establishing connection to New Relic'
-      @connection = NewRelic::Plugin::NewRelicConnection.new(options)
     end
 
     # Returns the poll interval (defaults to 10 seconds)
