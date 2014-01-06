@@ -1,5 +1,8 @@
-## v1.0.0
+### v1.1.0
+* Deprecated use of this library
+
+### v1.0.0
 * Updated and locked Gemfile to latest version of New Relic Ruby SDK (1.3.x)
 
-## v0.1.0
+### v0.1.0
 * Initial release
